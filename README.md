@@ -46,14 +46,14 @@ SmartShop AI Assistant is a modern e-commerce platform that helps users find the
 
 | Feature | Description | Status |
 |---------|-------------|--------|
-| 🔍 **AI Smart Search** | AI-powered product search with budget optimization | ✅ Implemented |
-| 💰 **Price Comparison** | Compare prices across multiple stores in real-time | ✅ Implemented |
-| ⭐ **Favorites** | Save and manage favorite products | ✅ Implemented |
-| 🛒 **Cart Management** | Add/remove items with quantity management | ✅ Implemented |
-| 📊 **Price History** | Track price changes over time | ✅ Implemented |
-| 🏪 **Store Management** | Browse stores with ratings and offers | ✅ Implemented |
-| 🔐 **JWT Authentication** | Secure user authentication | ✅ Implemented |
-| 🤖 **AI Chat Assistant** | Get product recommendations via chat | ✅ Implemented |
+|  **AI Smart Search** | AI-powered product search with budget optimization |  Implemented |
+|  **Price Comparison** | Compare prices across multiple stores in real-time |  Implemented |
+|  **Favorites** | Save and manage favorite products |  Implemented |
+|  **Cart Management** | Add/remove items with quantity management |  Implemented |
+|  **Price History** | Track price changes over time |  Implemented |
+|  **Store Management** | Browse stores with ratings and offers |  Implemented |
+|  **JWT Authentication** | Secure user authentication |  Implemented |
+|  **AI Chat Assistant** | Get product recommendations via chat |  Implemented |
 
 ### AI Features
 
@@ -476,9 +476,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For questions or support, please contact:
-- Email: your-email@example.com
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [Ibrahim Amjad](https://github.com/ibrahim-amjad764)
+
+
 
 ---
 
-<p align="center">Built with ❤️ using Spring Boot & React</p>
+<p align="center">Built with  using Spring Boot & React</p>
