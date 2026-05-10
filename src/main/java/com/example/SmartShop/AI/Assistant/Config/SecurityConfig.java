@@ -141,6 +141,7 @@
 //         return source;
 //     }
 // }
+
 package com.example.SmartShop.AI.Assistant.Config;
 
 import com.example.SmartShop.AI.Assistant.Security.JwtAuthFilter;
@@ -164,7 +165,7 @@ public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
 
-    // 🚀 Set your production frontend here via Railway ENV variable
+    // Railway environment variable
     @Value("${FRONTEND_URL:http://localhost:3000}")
     private String frontendUrl;
 
@@ -183,13 +184,13 @@ public class SecurityConfig {
         System.out.println("INFO: Initializing Security Filter Chain...");
 
         http
-            // Disable CSRF for JWT auth
+            // Disable CSRF (JWT based)
             .csrf(csrf -> csrf.disable())
 
-            // Enable CORS with our config
+            // Enable CORS with CorsConfigurationSource
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
-            // Stateless session (JWT)
+            // Stateless session
             .sessionManagement(session ->
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
@@ -197,23 +198,23 @@ public class SecurityConfig {
             // Authorization rules
             .authorizeHttpRequests(auth -> auth
                     // Public endpoints
-                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers("/auth/**").permitAll()
                     .requestMatchers("/api/products/**", "/api/search/**").permitAll()
                     .requestMatchers("/api/stores/**").permitAll()
                     .requestMatchers("/api/ai/**").permitAll()
 
-                    // Preflight OPTIONS request allowed
+                    // Preflight OPTIONS requests must be permitted
                     .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
 
                     // Protected endpoints
                     .requestMatchers("/api/cart/**").authenticated()
                     .requestMatchers("/api/favorites/**").authenticated()
 
-                    // Everything else secured
+                    // Everything else authenticated
                     .anyRequest().authenticated()
             )
 
-            // Add JWT filter
+            // Add JWT filter before username/password filter
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         System.out.println("INFO: Security configuration loaded successfully");
@@ -221,9 +222,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    /**
-     * CORS configuration — only this file now handles it
-     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
 
@@ -231,36 +229,31 @@ public class SecurityConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        // Allowed origins: local dev + production
+        // Allow local dev + Netlify
         config.setAllowedOrigins(List.of(
                 "http://localhost:3000",
                 "http://localhost:5173",
                 frontendUrl
         ));
 
-        // Allowed HTTP methods
+        // Allowed methods
         config.setAllowedMethods(List.of(
-                "GET",
-                "POST",
-                "PUT",
-                "PATCH",
-                "DELETE",
-                "OPTIONS"
+                "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"
         ));
 
         // Allow all headers
         config.setAllowedHeaders(List.of("*"));
 
-        // Allow credentials (cookies/JWT)
-        config.setAllowCredentials(true);
-
-        // Expose Authorization header if JWT in header is used
+        // Expose Authorization header (JWT)
         config.setExposedHeaders(List.of("Authorization"));
+
+        // Allow credentials
+        config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
 
-        System.out.println("INFO: CORS configuration applied");
+        System.out.println("INFO: CORS configuration applied successfully");
 
         return source;
     }
