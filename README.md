@@ -150,7 +150,6 @@ SmartShop AI Assistant is a modern e-commerce platform that helps users find the
 │  └─────────────────┘  └──────────────┘  └──────────────┘  │
 └─────────────────────────────────────────────────────────────┘
 ```
-<img width="3974" height="2374" alt="Fig2_1_Use_Case_Diagram" src="https://github.com/user-attachments/assets/dd54fd3d-2dc5-45c8-a1f2-28b591053454" />
 <img width="3974" height="2374" alt="Fig2_1_Use_Case_Diagram" src="https://github.com/user-attachments/assets/b3af938b-49b3-4939-a99e-769c5ace4ddd" />
 <img width="4374" height="2774" alt="Fig1_10_Data_Flow_Diagram" src="https://github.com/user-attachments/assets/a9771ddf-d5be-4bb8-b2bd-7f18c8c4fac5" />
 <img width="3974" height="2374" alt="Fig1_9_Deployment_Diagram" src="https://github.com/user-attachments/assets/f7bc9e10-cd60-46fe-a254-5ddcaf60dff9" />
